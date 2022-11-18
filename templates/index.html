@@ -8,12 +8,12 @@
         <!-- styles -->
         <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
     </head>
-    <body>
+    <body style="background-color:powderblue;">
 	  <nav>
-		<a href="{{ url_for('index') }}"> Home</a> ||
-		<a href="{{ url_for('get_notes') }}"> My Notes</a> ||
-		<a href="{{ url_for('new_note') }}"> Add Note</a> || 
-		<a href="{{ url_for('logout') }}">Logout</a>
+		<a style="font-size:120%;" style="background-color: #8976f4;" style="color:rgb(101, 101, 241);" href="{{ url_for('index') }}"> Home</a> ||
+		<a style="font-size:120%;" style="background-color: #8976f4;" style="color:rgb(101, 101, 241);" href="{{ url_for('get_notes') }}"> My Notes</a> ||
+		<a style="font-size:120%;" style="background-color: #8976f4;" style="color:rgb(101, 101, 241);" href="{{ url_for('new_note') }}"> Add Note</a> || 
+		<a style="font-size:120%;" style="background-color: #8976f4;" style="color:rgb(101, 101, 241);" href="{{ url_for('logout') }}">Logout</a>
 	  </nav>
 
         {% if user %}
@@ -27,16 +27,12 @@
 		</nav>
      	  {% endif %}
 
-        <h1>Welcome {{user.name}} to the 49er Notes App!</h1>
+         <marquee behavior="scroll" direction="left"><h1 style="color:rgb(101, 101, 241);">Welcome to the 26er Project Creation App!</h1></marquee>
 
-        <h2>Use this site to maintain and organize your notes.</h2>
+        <h2 style="color:rgb(255, 255, 255);"><p style="background-color: #8976f4">Use this site to maintain and organize your projects.</p></h2>
 
-        <h3>Course notes</h3>
-
-        <h3>To Do</h3>
-
-        <h3>Work notes</h3>
-	  <nav> <a href="/notes"> My notes </a> </nav>
+        <h3>View projects:</h3>
+	  <nav> <a href="/notes;" style="font-size:160%;" style="background-color: #8976f4;" style="color:rgb(101, 101, 241);"> My Projects </a> </nav>
 
     </body>
 </html>
