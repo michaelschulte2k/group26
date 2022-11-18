@@ -13,20 +13,20 @@
            <a href="{{ url_for('logout') }}" style="color:rgb(101, 101, 241);">Logout</a>
        </nav>
 
-        <h1 style="color:rgb(101, 101, 241);">Welcome {{user.name}} to the 49er Notes App!</h1>
+        <h1 style="color:rgb(101, 101, 241);">Welcome {{user.name}} to the 26er's Project App!</h1>
 
 		{% if note %}
 			<form action="{{ url_for('update_note', note_id=note.id) }}" method="post">
 		{% else %}
       		<form action="new" method="post">
 		{% endif %}
-            	<p><label style="color:rgb(101, 101, 241);">Title</label></p>
+            	<p><label style="color:rgb(101, 101, 241);">Project Title</label></p>
 			<p><input type="text" name="title" value="{% if note %}{{note.title}}{% endif %}"/></p>
-          		<p><label style="color:rgb(101, 101, 241);">Note</label></p>
+          		<p><label style="color:rgb(101, 101, 241);">Text</label></p>
 			<p>
-				<textarea name="noteText" rows="6" cols="0" style="background-color: #8976f4;" style="color:rgb(255, 255, 255);">
+				<textarea name="noteText" rows="6" cols="0" style="background-color: #9691FF;" style="color:rgb(255, 255, 255);">
 						{% if note %} {{note.text}}
-						{% else %} Add your new note here...
+						{% else %} Start typing here...
 						{% endif %}
 				</textarea>
 			</p>
