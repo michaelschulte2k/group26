@@ -8,17 +8,17 @@
         <!-- styles -->
         <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
     </head>
-    <body>
+    <body style="background-color:powderblue;">
 	  <nav>
-		<a href="{{ url_for('index') }}"> Home</a> ||
-		<a href="{{ url_for('get_notes') }}"> My Notes</a> ||
-		<a href="{{ url_for('new_note') }}"> Add Note</a> || 
-		<a href="{{ url_for('logout') }}">Logout</a>
+		<a style="font-size:130%;" style="background-color: #8976f4;" style="color:rgb(101, 101, 241);" href="{{ url_for('index') }}"> Home</a> ||
+		<a style="font-size:130%;" style="background-color: #8976f4;" style="color:rgb(101, 101, 241);" href="{{ url_for('get_notes') }}"> Project List</a> ||
+		<a style="font-size:130%;" style="background-color: #8976f4;" style="color:rgb(101, 101, 241);" href="{{ url_for('new_note') }}"> New Project</a> || 
+		<a style="font-size:130%;" style="background-color: #8976f4;" style="color:rgb(101, 101, 241);" href="{{ url_for('logout') }}">Logout</a>
 	  </nav>
 
-	  <h1>Welcome {{user}} to the 49er Notes App!</h1>
+	  <h1 style="color:rgb(255, 255, 255);"><p style="background-color: #8976f4">Welcome {{user}} to the 26er's Projects App!</h1>
 
-        <h2>Listing notes</h2>
+        <h2 style="color:rgb(255, 255, 255);"><p style="background-color: #8976f4">Listing notes</h2>
 
         <table>
 		<tr>
