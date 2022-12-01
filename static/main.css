@@ -2,9 +2,9 @@ body {
     padding: 30px 30px;
     }
 h1{
-    color:green;
+    color:rgb(101, 101, 241);
 }
 h2{
-    color:gold;
-    background:green;
+    color:rgb(255, 255, 255);
+    background:rgb(101, 101, 241);
 }

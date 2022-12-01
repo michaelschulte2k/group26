@@ -6,7 +6,8 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='forms.css') }}">
 </head>
-    <body>
+    <body style="background-color:powderblue;">
+        <a style="font-size:130%;" style="background-color: #8976f4;" style="color:rgb(101, 101, 241);" href="{{ url_for('index') }}"> Home</a> 
         <div class="navdiv">
             {% if user %}
 			<nav>
@@ -20,11 +21,11 @@
 		{% endif %}
         
         </div>
-        <h1>Welcome {% if user %}{{user}}{% endif %}to the 49er Notes App!</h1>
+        <h1 style="color: #8976f4">Welcome {% if user %}{{user}}{% endif %}to the 49er Notes App!</h1>
 
-        <h2>Use this site to maintain and organize your notes.</h2>
+        <h2 style="color:rgb(255, 255, 255);"><p style="background-color: #8976f4">Use this site to maintain and organize your notes.</h2></p>
         <div class="formwrapper">
-            <h2 class="title">Register</h2>
+            <h2 style="color:rgb(255, 255, 255);"><p style="background-color: #8976f4">Register</h2></p>
             <form method="POST" action="/register">
                 <div class="form-field">{{ form.firstname.label }} {{ form.firstname }}
                     {% if form.firstname.errors %}
