@@ -115,3 +115,17 @@ i {
   height: fit-content;
   color: grey;
 }
+
+input[type="radio"] {
+  display: none;
+}
+
+.star {
+  color: #ddd;
+  font-size: 2em;
+  padding: 0 1px;
+}
+
+input[type="radio"]:checked ~ .star {
+  color: #FFD700;
+}
