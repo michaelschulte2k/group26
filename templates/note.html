@@ -44,6 +44,17 @@
   		{% endif %}
 	  {% endif %}
 
+	  {% if note.ratings %}
+  		{% if note.ratings|length > 0 %}
+    			<h2 style="color:rgb(255, 255, 255);"><p style="background-color: #8976f4">Ratings</h2>
+    			<ul>
+    			{% for rating in note.ratings %}
+      			<li>{{ rating.rating }}</li>
+    			{% endfor %}
+    			</ul>
+  		{% endif %}
+	  {% endif %}
+
 	  <form action="{{ url_for('new_comment', note_id=note.id) }}" method="post">
   		<div class="formwrapper">
     			<h2 style="color:rgb(255, 255, 255);"><p style="background-color: #8976f4" class="title">Add a comment</h2>
@@ -53,37 +64,56 @@
     			{{ form.submit }}
   		</div>
 	  </form>
-	  <form>
-		<label>
-		  <input type="radio" name="rating" value="1" />
-		  <span class="star">★</span>
-		</label>
-		<label>
-		  <input type="radio" name="rating" value="2" />
-		  <span class="star">★</span>
-		  <span class="star">★</span>
-		</label>
-		<label>
-		  <input type="radio" name="rating" value="3" />
-		  <span class="star">★</span>
-		  <span class="star">★</span>
-		  <span class="star">★</span>
-		</label>
-		<label>
-		  <input type="radio" name="rating" value="4" />
-		  <span class="star">★</span>
-		  <span class="star">★</span>
-		  <span class="star">★</span>
-		  <span class="star">★</span>
-		</label>
-		<label>
-		  <input type="radio" name="rating" value="5" />
-		  <span class="star">★</span>
-		  <span class="star">★</span>
-		  <span class="star">★</span>
-		  <span class="star">★</span>
-		  <span class="star">★</span>
-		</label>
+	  <form action="{{ url_for('new_rating', note_id=note.id) }}" method="post">
+		<div class="formwrapper">
+			<label>
+			<input type="radio" name="rating" value="★" />
+			<span class="star">★</span>
+			<div class="form-field">
+				{{ form.rating.star }} 
+			  </div>
+			</label>
+			<label>
+			<input type="radio" name="rating" value="★★" />
+			<span class="star">★</span>
+			<span class="star">★</span>
+			<div class="form-field">
+				{{ form.rating.star }} 
+			  </div>
+			</label>
+			<label>
+			<input type="radio" name="rating" value="★★★" />
+			<span class="star">★</span>
+			<span class="star">★</span>
+			<span class="star">★</span>
+			<div class="form-field">
+				{{ form.rating.star }} 
+			  </div>
+			</label>
+			<label>
+			<input type="radio" name="rating" value="★★★★" />
+			<span class="star">★</span>
+			<span class="star">★</span>
+			<span class="star">★</span>
+			<span class="star">★</span>
+			<div class="form-field">
+				{{ form.rating.star }} 
+			  </div>
+			</label>
+			<label>
+			<input type="radio" name="rating" value="★★★★★" />
+			<span class="star">★</span>
+			<span class="star">★</span>
+			<span class="star">★</span>
+			<span class="star">★</span>
+			<span class="star">★</span>
+			<div class="form-field">
+				{{ form.rating.star }} 
+			  </div>
+			</label>
+			<input type="submit" value="Add Rating"/>
+			{{ form.rating.submit}}
+		</div>
 	  </form>
 	  
 	  <h2 style="color:rgb(255, 255, 255);"><p style="background-color: #8976f4" class="title">Add an image</h2>

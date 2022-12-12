@@ -56,5 +56,14 @@ class CommentForm(FlaskForm):
         csrf = False
 
     comment = TextAreaField('Comment', validators=[Length(min=1)])
+    rating = StringField('Rating')
 
     submit = SubmitField('Add Comment')
+
+class RatingForm(FlaskForm):
+    class Meta:
+        csrf = False
+
+    rating = TextAreaField('Rating', validators=[Length(min=1)])
+
+    submit = SubmitField('Add Rating')
