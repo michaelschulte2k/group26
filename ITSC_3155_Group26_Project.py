@@ -244,8 +244,10 @@ def download(upload_id):
         return send_file(BytesIO(downloadFile.img), as_attachment=True, download_name=downloadFile.name)
     else:
         return redirect(url_for('login'))
-#class for incrementing the number of times someone goes onto a specific project page
-@app.route('/notes/<note_id>', methods = ['POST'])
+
+    
+    #class for incrementing the number of times someone goes onto a specific project page
+@app.route('/notes/<note_id>/view', methods = ['POST'])
 def viewcount(note_id):
     
     counting_form = CountForm()
