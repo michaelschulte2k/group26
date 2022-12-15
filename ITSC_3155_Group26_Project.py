@@ -1,4 +1,4 @@
-# FLASK Tutorial 1 -- We show the bare-bones code to get an app up and running
+
 
 # imports
 import os  # os is used to get environment variables IP & PORT
