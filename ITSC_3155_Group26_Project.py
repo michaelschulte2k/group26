@@ -244,7 +244,7 @@ def download(upload_id):
         return send_file(BytesIO(downloadFile.img), as_attachment=True, download_name=downloadFile.name)
     else:
         return redirect(url_for('login'))
-
+#class for incrementing the number of times someone goes onto a specific project page
 @app.route('/notes/<note_id>', methods = ['POST'])
 def viewcount(note_id):
     
@@ -253,7 +253,7 @@ def viewcount(note_id):
     new_count = View(counter_num, int(note_id), session['user_id'])
     db.session.add(new_count)
     db.session.commit()
-    return render_template('note.html', note_id=note_id)
+    return render_template('note.html', note_id = note_id)
 
 
 app.run(host=os.getenv('IP', '127.0.0.1'), port=int(os.getenv('PORT', 5000)), debug=True)
