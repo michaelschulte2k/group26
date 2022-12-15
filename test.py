@@ -8,7 +8,7 @@ class FlaskTest(unittest.TestCase):
         response = requests.get("http://127.0.0.1:5000/")
         statuscode = response.status_code
         self.assertEqual(statuscode, 200)
-        self.assertEqual('<h2>Use this site to maintain and organize your notes.</h2>' in response.text, True)
+        self.assertEqual('<h2>Use this site to maintain and organize your projects.</h2>' in response.text, True)
 
     def test_notes(self):
         response = requests.get("http://127.0.0.1:5000/notes")
@@ -20,7 +20,7 @@ class FlaskTest(unittest.TestCase):
         response = requests.get("http://127.0.0.1:5000/notes/1")
         statuscode = response.status_code
         self.assertEqual(statuscode, 200)
-        self.assertEqual('First Note' in response.text, True)
+        self.assertEqual('First Project' in response.text, True)
 
     def test_new(self):
         response = requests.get("http://127.0.0.1:5000/notes/new")
