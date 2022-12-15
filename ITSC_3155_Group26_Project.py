@@ -3,19 +3,25 @@
 # imports
 import os  # os is used to get environment variables IP & PORT
 import bcrypt
+from io import BytesIO
 from flask import Flask  # Flask is the web app that we will customize
 from flask import render_template  # Import render_template class
 from flask import request  # Import request class
 from flask import redirect, url_for  # Import redirect and url_for class
 from flask import session
+from flask import Response
+from flask import send_file
 from database import db
 from models import Note as Note
 from models import User as User
 from models import Rating as Rating
 from models import Comment as Comment
+from models import Upload as Upload
+from models import View as View
 from forms import RegisterForm
 from forms import LoginForm
-from forms import RegisterForm, LoginForm, CommentForm, RatingForm
+from forms import RegisterForm, LoginForm, CommentForm, RatingForm, UploadForm, CountForm
+from werkzeug.utils import secure_filename
 
 app = Flask(__name__)  # create an app
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///flask_note_app.db'
@@ -212,7 +218,42 @@ def new_rating(note_id):
             db.session.commit()
         return redirect(url_for('get_note', note_id=note_id))
     else:
-        return redirect(url_for('login')) 
+        return redirect(url_for('login'))
+
+
+@app.route('/notes/<note_id>/upload', methods=['POST'])
+def upload(note_id):
+    if session.get('user'):
+        upload_file = request.files['file']
+
+        filename = secure_filename(upload_file.filename)
+        mimetype = upload_file.mimetype
+
+        img = Upload(img=upload_file.read(), name=filename, mimetype=mimetype, note_id=int(note_id), user_id=session['user_id'])
+        db.session.add(img)
+        db.session.commit()
+        return redirect(url_for('get_note', note_id=note_id))
+    else:
+        return redirect(url_for('login'))
+
+
+@app.route('/download/<upload_id>', methods=['GET'])
+def download(upload_id):
+    if session.get('user'):
+        downloadFile = Upload(None, None, None, None, None).query.filter_by(id=upload_id).first()
+        return send_file(BytesIO(downloadFile.img), as_attachment=True, download_name=downloadFile.name)
+    else:
+        return redirect(url_for('login'))
+
+@app.route('/notes/<note_id>', methods = ['POST'])
+def viewcount(note_id):
+    
+    counting_form = CountForm()
+    counter_num = request.form['counter']
+    new_count = View(counter_num, int(note_id), session['user_id'])
+    db.session.add(new_count)
+    db.session.commit()
+    return render_template('note.html', note_id=note_id)
 
 
 app.run(host=os.getenv('IP', '127.0.0.1'), port=int(os.getenv('PORT', 5000)), debug=True)

@@ -1,4 +1,5 @@
 from flask_wtf import FlaskForm
+from flask_wtf.file import FileField, FileRequired
 from wtforms import StringField, PasswordField, SubmitField, TextAreaField
 from wtforms.validators import Length, Regexp, DataRequired, EqualTo, Email
 from wtforms import ValidationError
@@ -57,8 +58,10 @@ class CommentForm(FlaskForm):
 
     comment = TextAreaField('Comment', validators=[Length(min=1)])
     rating = StringField('Rating')
+    fileUpload = FileField('Upload')
 
     submit = SubmitField('Add Comment')
+
 
 class RatingForm(FlaskForm):
     class Meta:
@@ -67,3 +70,19 @@ class RatingForm(FlaskForm):
     rating = TextAreaField('Rating', validators=[Length(min=1)])
 
     submit = SubmitField('Add Rating')
+
+
+class UploadForm(FlaskForm):
+    class Meta:
+        csrf = False
+
+    fileUpload = FileField('Upload', validators=[FileRequired()])
+
+    submit = SubmitField('Upload File')
+
+class CountForm(FlaskForm):
+    class Meta:
+        csrf = False
+
+    counter = TextAreaField('View', validators=[FileRequired()])
+

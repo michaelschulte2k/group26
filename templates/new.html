@@ -4,16 +4,17 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="UNCC Notes App">
-        <title style="color:rgb(101, 101, 241);">26er Project Creation App - New Note</title>
+        <title style="color:rgb(101, 101, 241);">26er Project Creation App - New Project</title>
         <!-- styles -->
         <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
     </head>
 	<body style="background-color:powderblue;">
        <nav>
            <a href="{{ url_for('logout') }}" style="color:rgb(101, 101, 241);">Logout</a>
+		   <a style="font-size:130%;" style="background-color: #8976f4;" style="color:rgb(101, 101, 241);" href="{{ url_for('index') }}"> Home</a>
        </nav>
 
-        <h1 style="color:rgb(101, 101, 241);">Welcome {{user.name}} to the 26er's Project App!</h1>
+        <h1 style="color:rgb(101, 101, 241);">Welcome {{user.name}} to the GOPEapp!</h1>
 
 		{% if note %}
 			<form action="{{ url_for('update_note', note_id=note.id) }}" method="post">

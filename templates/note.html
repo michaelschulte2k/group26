@@ -3,8 +3,8 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="description" content="UNCC Notes App">
-        <title>UNCC Notes App - View your Note</title>
+        <meta name="description" content="Graphic Online Project Environment">
+        <title>Graphic Online Project Environment</title>
         <!-- styles -->
         <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
     </head>
@@ -16,7 +16,7 @@
 		<a style="font-size:130%;" style="background-color: #8976f4;" style="color:rgb(101, 101, 241);" href="{{ url_for('logout') }}">Logout</a>
 	  </nav>
 
-	  <h1 style="color:rgb(255, 255, 255);"><p style="background-color: #8976f4">Welcome {{user.name}} to the 26er's Project App!</h1>
+	  <h1 style="color:rgb(255, 255, 255);"><p style="background-color: #8976f4">Welcome {{user.name}} to the GOPEapp!</h1>
 
         <h1 style="color:rgb(255, 255, 255);"><p style="background-color: #8976f4">Project Detials</h1>
 
@@ -116,11 +116,19 @@
 		</div>
 	  </form>
 	  
-	  <h2 style="color:rgb(255, 255, 255);"><p style="background-color: #8976f4" class="title">Add an image</h2>
-	  <form action="/action_page.php">
-	  	<input type="file" id="myFile" name="filename">
-		<input type="submit">
-	  </form>  	  
-	  
+	  <h2 style="color:rgb(255, 255, 255);"><p style="background-color: #8976f4" class="title">Upload a file</h2>
+	  <form action="{{ url_for('upload', note_id=note.id) }}" method="POST" enctype="multipart/form-data">
+	  	<input type="file" name="file">
+		<input type="submit" value="Upload a file">
+		{{ form.fileUpload.submit}}
+		<h3 style="color:rgb(255, 255, 255);"><p style="background-color: #8976f4" class="title">Download</h3>
+			{% for upload in note.uploads %}
+	  			<ul>
+					<li>
+						{{ upload.name.rsplit('.', 1)[0] }} | <a href="{{ url_for('download', upload_id=upload.id) }}">Download</a>
+					</li>
+				</ul>
+	  		{% endfor %}
+	  </form>
     </body>
 </html>
